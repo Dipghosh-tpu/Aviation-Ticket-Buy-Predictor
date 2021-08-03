@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 
 # load the model from disk
-predictor_model_mobile=pickle.load(open('/Users/sunandakumarghosh/Desktop/Social_Media_Tourism/XGBoost_model.pkl', 'rb'))
+predictor_model_mobile=pickle.load(open('XGBoost_model.pkl', 'rb'))
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,9 +13,6 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    # df=pd.read_csv('real_2018.csv')
-    # my_prediction=loaded_model.predict(df.iloc[:,:-1].values)
-    # my_prediction=my_prediction.tolist()
 
     if request.method == 'POST':
         Yearly_avg_view_on_travel_page = float(request.form['Yearly_avg_view_on_travel_page'])
