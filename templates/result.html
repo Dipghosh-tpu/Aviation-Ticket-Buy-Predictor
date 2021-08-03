@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Aviation Customer Ticket Predictor</title>
-		<link rel="shortcut icon" href="{{ url_for('static', filename='aqi-logo-280x150.jpg') }}">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='freepressjournal_2020-03_567529bc-0e21-4724-a7ed-64147a7d2f27_cats.jpeg') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 		<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
 		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -22,16 +22,22 @@
     	</div>
 
 		<!-- Result -->
-		<div class="results">
-			<h2 style="color:MediumVioletRed;">The Customer is going to buy, 1- Yes, 0 - No</h2>
-			<h3 style="color:MediumVioletRed;"> {{ prediction[0] }} </h3>
-
 		</div>
-
+		<div class="results">
+			{% if prediction[0]==1.0 %}
+				<h1>Prediction: <span class='safe'>Customer is going to buy the flight tickets.</span></h1>
+			    <!--<h2 style="color:MediumVioletRed;"> {{ prediction[0] }} </h2>-->
+				<img class="gif" src="{{ url_for('static', filename='hand-157251_1280.png') }}" alt="Thumbs Up Image">
+			{% elif prediction[0]==0.0 %}
+				<h1>Prediction: <span class='danger'>Customer is NOT going to buy the flight tickets.</span></h1>
+			    <!--<h2 style="color:MediumVioletRed;"> {{ prediction[0] }} </h2>-->
+				<img class="gif1" src="{{ url_for('static', filename='dislike-157252_1280.png') }}" alt="Thumbs Down Image">
+			{% endif %}
+		</div>
 		<!-- Footer -->
        <div class='footer'>
            <div class="contact">
-               <a target="_blank" href="https://github.com/Dipghosh-tpu/Air-Quality-Prediction-Machine-Learning-Project."><i class="fab fa-github fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://github.com/Dipghosh-tpu/Aviation-Ticket-Buy-Predictor"><i class="fab fa-github fa-lg contact-icon"></i></a>
                <a target="_blank" href="https://www.linkedin.com/in/sunanda-kumar-ghosh-22617b99/"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
            </div>
            <p class='footer-description'>Made by Sunanda Kumar Ghosh.</p>
